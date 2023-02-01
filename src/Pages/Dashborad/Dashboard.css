@@ -1,0 +1,9 @@
+.appointmentTable th{
+    padding: 10px;
+    text-align: left;
+}
+.appointmentTable tr{
+    background-color: rgb(255, 255, 255);
+    color: black;
+    border-top: 1px solid #3a42568f;
+}

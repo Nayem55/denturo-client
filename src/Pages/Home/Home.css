@@ -1,0 +1,104 @@
+
+.banner{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 80px 80px;
+}
+.banner img{
+    width: 600px;
+}
+.banner-text{
+    width: 50%;
+}
+.banner-text h1{
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.banner-text button{
+    margin-top: 20px;
+}
+.info{
+    padding: 40px;
+}
+.services{
+    padding: 80px;
+}
+.homeAppointment{
+    background-image: url(../../assets/images/appointment.png);
+    margin-top: 200px;
+    display: flex;    
+    align-items: center;
+}
+.appointmentDesc{
+    padding-right: 100px;
+    width: 50%;
+
+}
+.home-contact{
+    background-image: url(../../assets/images/appointment.png);
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    height: 80vh;
+    margin-bottom: 60px;
+}
+.home-contact input,.home-contact textarea{
+    width: 50%;
+    margin: 10px;
+    padding: 10px;
+    outline-color:#19D3AE;
+    border: none;
+}
+
+@media(max-width:992px){
+    .banner{
+        margin-top: 85px;
+        flex-direction: column-reverse;
+        padding: 20px;
+    }
+    .banner img{
+        width: 600px;
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+    .banner-text{
+        width: 100%;
+    }
+    .banner-text h1{
+        font-size: 30px;
+    }
+    .info{
+        padding: 20px;
+    }
+    .services{
+        padding: 20px;
+    }
+
+    .treatment{
+        padding: 20px;
+    }
+    .treatment img{
+        width: 80vw;
+    }
+    .homeAppointment{
+        padding: 40px;
+        margin-top: 20px;
+    }
+    .homeAppointment img{
+        display: none;
+    }
+    .appointmentDesc{
+        width: 100%;
+    }
+    .appointmentDesc p{
+        width: 80vw;
+    }
+    .home-contact input,.home-contact textarea{
+        width: 100%;
+    }
+}

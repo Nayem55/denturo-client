@@ -5,15 +5,19 @@ import auth from "../../firebase.init";
 
 const MyAppointment = () => {
     const [user] = useAuthState(auth);
-    console.log(user?.email)
     const {data : bookings = []} = useQuery({
         queryKey: ['bookings' ,user?.email],
         queryFn: async ()=>{
-            const res = await fetch(`http://localhost:5000/bookings?email=${user?.email}`)
+            const res = await fetch(`http://localhost:5000/bookings?email=${user?.email}`,{
+              headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+              }
+            })
             const data = res.json();
             return data;
         }
     })
+    console.log(bookings);
   return (
     <div className="m-10">
       <h1 className="text-xl ">My Appointments</h1>

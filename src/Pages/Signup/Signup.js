@@ -1,29 +1,51 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import  auth  from '../../firebase.init'
 import google from '../Login/google.png'
 import { ThemeContext } from "../../Contexts/ThemeContext";
+import { useState } from "react";
+import useToken from "../../Hooks/useToken";
 
 const Signup = () => {
   const {dark} = useContext(ThemeContext);
   const { register, formState: { errors }, handleSubmit} = useForm();
   const [ createUserWithEmailAndPassword, user, loading, error ] = useCreateUserWithEmailAndPassword(auth);
+  const [updateProfile] = useUpdateProfile(auth);
+  const [createdUserEmail,setCreatedUserEmail] = useState('');
+  const [token] = useToken(createdUserEmail);
   const navigqate = useNavigate();
 
-  useEffect(()=>{
-    if(user){
+    if(token){
         navigqate('/')
     }
-  },[user])
 
-  const handleSignup = (data) => {
+  const handleSignup =async (data) => {
     if(loading){
         return
     }
-    createUserWithEmailAndPassword(data.email,data.password)
+    await createUserWithEmailAndPassword(data.email,data.password);
+    await updateProfile({displayName:data.name});
+    saveUser(data.name,data.email);
   };
+
+  const saveUser =(name,email)=>{
+    const user = {name,email};
+    fetch('http://localhost:5000/users',{
+      method: 'post',
+      headers: {
+        'content-type' : 'application/json'
+      },
+      body: JSON.stringify(user)
+    })
+    .then(res=>res.json())
+    .then(data=>{
+      setCreatedUserEmail(email);
+    })
+  }
+
+
   return (
     <div className="pt-20 lg:pt-0">
       <div className="h-[600px] flex justify-center items-center p-6 my-20">

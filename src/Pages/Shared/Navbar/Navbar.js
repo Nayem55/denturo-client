@@ -20,6 +20,8 @@ const Header = () => {
     const handleSignOut=()=>{
         signOut(auth)
     }
+    console.log(user);
+
     setTimeout(()=>document.getElementById("checkbox").checked=dark ,1)
     return (
         <div className={`header ${dark?"dark-header" : "" } `}>

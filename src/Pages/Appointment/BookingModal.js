@@ -72,6 +72,8 @@ const BookingModal = ({ treatment, selected ,setTreatment ,refetch }) => {
               name="name"
               required
               placeholder="Full Name"
+              value={user?.displayName}
+              readOnly
               className="input input-bordered bg-white text-secondary border-secondary bg-opacity-20 placeholder-secondary mb-4"
             />
             <input

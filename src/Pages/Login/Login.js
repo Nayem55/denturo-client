@@ -6,26 +6,37 @@ import auth from "../../firebase.init";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import google from './google.png'
 import { ThemeContext } from "../../Contexts/ThemeContext";
+import { useState } from "react";
+import useToken from "../../Hooks/useToken";
+import { signOut } from "firebase/auth";
 
 
 const Login = () => {
   const {dark} = useContext(ThemeContext);
   const { register, formState: {errors} , handleSubmit } = useForm();
   const [ signInWithEmailAndPassword, user, loading, error ] = useSignInWithEmailAndPassword(auth);
+  const [loginUserEmail,setLoginUserEmail] = useState('');
+  const [token] = useToken(loginUserEmail);
   const navigate = useNavigate();
   let location = useLocation();
   let from = location.state?.from?.pathname || "/";
 
-  useEffect(()=>{
-    if(user){
-      navigate(from , {replace: true});
-    }
-  },[user])
-  const handleLogin=(data)=>{
+    useEffect(()=>{
+      if(token){
+        navigate(from , {replace: true});
+      }
+      else{
+        signOut(auth);
+        navigate('/login');
+      }
+    },[token])
+    
+  const handleLogin=async(data)=>{
     if(loading){
       return
     }
-    signInWithEmailAndPassword(data.email,data.password)
+    await signInWithEmailAndPassword(data.email,data.password);
+    await setLoginUserEmail(data.email);
   }
   return (
     <div className="h-[600px] flex justify-center items-center p-6 my-20">

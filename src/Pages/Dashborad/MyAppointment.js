@@ -17,10 +17,9 @@ const MyAppointment = () => {
             return data;
         }
     })
-    console.log(bookings);
   return (
     <div className="m-10">
-      <h1 className="text-xl ">My Appointments</h1>
+      <h1 className="text-3xl ">My Appointments</h1>
       <div className="overflow-x-auto appointmentTable mt-10">
         <table className="w-full mb-10">
           <thead className="bg-secondary text-accent">

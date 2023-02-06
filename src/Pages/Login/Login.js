@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import "./Login.css";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -8,28 +8,21 @@ import google from './google.png'
 import { ThemeContext } from "../../Contexts/ThemeContext";
 import { useState } from "react";
 import useToken from "../../Hooks/useToken";
-import { signOut } from "firebase/auth";
 
 
 const Login = () => {
   const {dark} = useContext(ThemeContext);
   const { register, formState: {errors} , handleSubmit } = useForm();
-  const [ signInWithEmailAndPassword, user, loading, error ] = useSignInWithEmailAndPassword(auth);
+  const [ signInWithEmailAndPassword, loading, error ] = useSignInWithEmailAndPassword(auth);
   const [loginUserEmail,setLoginUserEmail] = useState('');
   const [token] = useToken(loginUserEmail);
   const navigate = useNavigate();
   let location = useLocation();
   let from = location.state?.from?.pathname || "/";
 
-    useEffect(()=>{
-      if(token){
-        navigate(from , {replace: true});
-      }
-      else{
-        signOut(auth);
-        navigate('/login');
-      }
-    },[token])
+    if(token){
+      navigate(from , {replace: true});
+    }
     
   const handleLogin=async(data)=>{
     if(loading){

@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { Link } from "react-router-dom";
 import auth from "../../firebase.init";
 
 const MyAppointment = () => {
@@ -18,7 +19,7 @@ const MyAppointment = () => {
         }
     })
   return (
-    <div className="m-10">
+    <div className="m-5 lg:m-10">
       <h1 className="text-3xl ">My Appointments</h1>
       <div className="overflow-x-auto appointmentTable mt-10">
         <table className="w-full mb-10">
@@ -28,6 +29,7 @@ const MyAppointment = () => {
               <th>Treatment</th>
               <th>Date</th>
               <th>Time</th>
+              <th>Payment</th>
           </thead>
           <tbody>
             {
@@ -37,6 +39,11 @@ const MyAppointment = () => {
               <td>{booking?.treatment}</td>
               <td>{booking?.appointmentDate}</td>
               <td>{booking?.slot}</td>
+              <td>{
+                !booking.paid ? <Link to={`/dashboard/payment/${booking?._id}`}>
+                <button className="btn btn-primary btn-sm text-white m-2">Pay now</button>
+                </Link> : <span className="text-secondary ml-4 font-bold">Paid</span>
+              }</td>
             </tr>) 
             }
           </tbody>

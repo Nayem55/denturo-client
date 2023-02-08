@@ -20,7 +20,8 @@ const BookingModal = ({ treatment, selected ,setTreatment ,refetch }) => {
         patient : name,
         slot,
         email,
-        number
+        number,
+        price : treatment.price
     }
 
     fetch('http://localhost:5000/bookings' , {

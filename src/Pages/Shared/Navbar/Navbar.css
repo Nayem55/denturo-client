@@ -70,12 +70,12 @@
     }
     .show{
         position: absolute;
-        top: 90px;
+        top: 85px;
         right: 0;
     }
     .hide{
         position: absolute;
-        top: 90px;
+        top: 85px;
         right: -1000px;
     }
     .toggle-btn{

@@ -32,7 +32,7 @@ const Signup = () => {
 
   const saveUser =(name,email)=>{
     const user = {name,email};
-    fetch('http://localhost:5000/users',{
+    fetch('https://doctors-portal-server-mu-flame.vercel.app/users',{
       method: 'post',
       headers: {
         'content-type' : 'application/json'

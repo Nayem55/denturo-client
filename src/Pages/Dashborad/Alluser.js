@@ -5,13 +5,13 @@ const Alluser = () => {
   const { data: users = [], refetch } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/users");
+      const res = await fetch("https://doctors-portal-server-mu-flame.vercel.app/users");
       const data = await res.json();
       return data;
     },
   });
   const handleMakeAdmin = (id) => {
-    fetch(`http://localhost:5000/users/admin/${id}`, {
+    fetch(`https://doctors-portal-server-mu-flame.vercel.app/users/admin/${id}`, {
       method: "PUT",
       headers: {
         authorization: `bearer ${localStorage.getItem("accessToken")}`,
@@ -23,8 +23,8 @@ const Alluser = () => {
       });
   };
   return (
-    <div className="m-10">
-      <h1 className="text-3xl">All Users</h1>
+    <div className="m-5 mt-32 lg:m-10">
+      <h1 className="text-xl lg:text-3xl">All Users</h1>
       <div className="overflow-x-auto appointmentTable mt-10">
         <table className="w-full mb-10">
           <thead className="bg-secondary text-accent">

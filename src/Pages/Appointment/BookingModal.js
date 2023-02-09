@@ -24,7 +24,7 @@ const BookingModal = ({ treatment, selected ,setTreatment ,refetch }) => {
         price : treatment.price
     }
 
-    fetch('http://localhost:5000/bookings' , {
+    fetch('https://doctors-portal-server-mu-flame.vercel.app/bookings' , {
       method: 'post',
       headers: {
         'content-type' : 'application/json'

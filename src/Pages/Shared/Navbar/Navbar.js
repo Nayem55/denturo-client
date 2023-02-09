@@ -22,11 +22,12 @@ const Header = () => {
     }
 
     setTimeout(()=>document.getElementById("checkbox").checked=dark ,1)
+    setTimeout(()=>document.getElementById("mobile-checkbox").checked=dark ,1)
     return (
         <div className={`header ${dark?"dark-header" : "" } `}>
         <div className='mobile-nav'>
-        <label htmlFor="my-drawer-2" className={`${location.pathname==="/dashboard" ? "":"hidden"}`}>
-        <FontAwesomeIcon  className='drawer-button lg:hidden' icon={faArrowRightToBracket}></FontAwesomeIcon>
+        <label htmlFor="dashboard-drawer" className={`${location.pathname.includes("/dashboard") ? "":"hidden"}`}>
+        <FontAwesomeIcon className='drawer-button lg:hidden' icon={faArrowRightToBracket}></FontAwesomeIcon>
         </label>
         {dark?
         <img onClick={()=>navigate('/home')} className='logo' src={darkLogo} alt="" />:
@@ -34,7 +35,7 @@ const Header = () => {
         }
         <div className='flex'>
         <FontAwesomeIcon onClick={()=>setOpen(!open)} className='bar' icon={faBars}></FontAwesomeIcon>
-        <input onClick={handleTheme} type="checkbox" className="toggle toggle-secondary mb-toggle" />
+        <input id='mobile-checkbox' onClick={handleTheme} type="checkbox" className="toggle toggle-secondary mb-toggle" />
         </div>
       
         </div>

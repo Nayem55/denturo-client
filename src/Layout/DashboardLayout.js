@@ -5,10 +5,14 @@ import auth from "../firebase.init";
 import Navbar from "../Pages/Shared/Navbar/Navbar";
 import "../Pages/Dashborad/Dashboard.css";
 import useAdmin from "../Hooks/useAdmin";
+import { useContext } from "react";
+import { ThemeContext } from "../Contexts/ThemeContext";
+
 
 const DashboardLayout = () => {
   const [user] = useAuthState(auth);
-  const [isAdmin] = useAdmin(user?.email);
+  const [isAdmin] = useAdmin(user.email);
+  const {dark} = useContext(ThemeContext);
   return (
     <div>
       <Navbar></Navbar>
@@ -18,12 +22,12 @@ const DashboardLayout = () => {
           type="checkbox"
           className="drawer-toggle"
         />
-        <div className="drawer-content bg-black bg-opacity-20">
+        <div className={`drawer-content ${dark? "bg-[#141525]" : "bg-[#cccccc]"}`}>
           <Outlet></Outlet>
         </div>
         <div className="drawer-side bg-secondary">
           <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
-          <ul className="menu p-4 w-80 text-base-content">
+          <ul className="menu p-4 w-60 lg:w-80 text-base-content bg-secondary mt-20 lg:mt-0">
             <li>
               <Link to="/dashboard">My Appointments</Link>
             </li>

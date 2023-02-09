@@ -9,7 +9,7 @@ const MyAppointment = () => {
     const {data : bookings = []} = useQuery({
         queryKey: ['bookings' ,user?.email],
         queryFn: async ()=>{
-            const res = await fetch(`http://localhost:5000/bookings?email=${user?.email}`,{
+            const res = await fetch(`https://doctors-portal-server-mu-flame.vercel.app/bookings?email=${user?.email}`,{
               headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
               }
@@ -19,8 +19,8 @@ const MyAppointment = () => {
         }
     })
   return (
-    <div className="m-5 lg:m-10">
-      <h1 className="text-3xl ">My Appointments</h1>
+    <div className="m-5 mt-32 lg:m-10">
+      <h1 className="text-xl lg:text-3xl ">My Appointments</h1>
       <div className="overflow-x-auto appointmentTable mt-10">
         <table className="w-full mb-10">
           <thead className="bg-secondary text-accent">

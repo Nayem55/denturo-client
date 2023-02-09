@@ -32,7 +32,7 @@ const AddDoctor = () => {
                 specialty: data.specialty,
                 image: imgData.data.url
             }
-            fetch('http://localhost:5000/doctors',{
+            fetch('https://doctors-portal-server-mu-flame.vercel.app/doctors',{
                 method: 'POST',
                 headers: {
                     'content-type' : 'application/json',
@@ -52,13 +52,13 @@ const AddDoctor = () => {
 };
 
   return (
-    <div className="m-10 doc-form">
+    <div className="m-5 mt-32 lg:m-10 doc-form">
       <h1 className="text-3xl mb-5 text-center">Add Doctor</h1>
       <form className="w-full" onSubmit={handleSubmit(HandleAddDoctor)}>
         <div className="form-control w-full max-w-xs">
           <label className="label">
             {" "}
-            <span className="label-text text-secondary">Name</span>{" "}
+            <span className={`label-text ${dark? "text-accent" : "text-secondary"}`}>Name</span>{" "}
           </label>
           <input
             type="text"
@@ -73,7 +73,7 @@ const AddDoctor = () => {
         <div className="form-control w-full max-w-xs">
           <label className="label">
             {" "}
-            <span className="label-text text-secondary">Email</span>{" "}
+            <span className={`label-text ${dark? "text-accent" : "text-secondary"}`}>Email</span>{" "}
           </label>
           <input
             type="email"
@@ -90,7 +90,7 @@ const AddDoctor = () => {
         <div className="form-control w-full max-w-xs">
           <label className="label">
             {" "}
-            <span className="label-text text-secondary">Specialty</span>{" "}
+            <span className={`label-text ${dark? "text-accent" : "text-secondary"}`}>Specialty</span>{" "}
           </label>
           <select {...register('specialty')}
            className="select select-bordered bg-white text-secondary border-secondary w-full max-w-xs">
@@ -108,7 +108,7 @@ const AddDoctor = () => {
         <div className="form-control w-full max-w-xs">
           <label className="label">
             {" "}
-            <span className="label-text text-secondary">Image</span>{" "}
+            <span className={`label-text ${dark? "text-accent" : "text-secondary"}`}>Image</span>{" "}
           </label>
           <input
             type="file"

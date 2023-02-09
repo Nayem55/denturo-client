@@ -14,7 +14,7 @@ const ManageDoctors = () => {
   } = useQuery({
     queryKey: ["doctors"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/doctors", {
+      const res = await fetch("https://doctors-portal-server-mu-flame.vercel.app/doctors", {
         headers: {
           authorization: `bearer ${localStorage.getItem("accessToken")}`,
         },
@@ -32,7 +32,7 @@ const ManageDoctors = () => {
     setDeletingDoc(null);
   };
   const handleDeleteDoc = (doctor) => {
-    fetch(`http://localhost:5000/doctors/${doctor._id}`, {
+    fetch(`https://doctors-portal-server-mu-flame.vercel.app/doctors/${doctor._id}`, {
       method: "DELETE",
       headers: {
         authorization: `bearer ${localStorage.getItem("accessToken")}`,
@@ -48,8 +48,8 @@ const ManageDoctors = () => {
   };
 
   return (
-    <div className="m-4 lg:m-10">
-      <h1 className="text-3xl">Manage Doctors : {doctors?.length}</h1>
+    <div className="m-5 mt-32 lg:m-10">
+      <h1 className="text-xl lg:text-3xl">Manage Doctors : {doctors?.length}</h1>
       <div className="overflow-x-auto appointmentTable mt-10">
         <table className="w-full mb-10">
           <thead className="bg-secondary text-accent">

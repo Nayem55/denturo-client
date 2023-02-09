@@ -12,7 +12,7 @@ const AvailableAppointments = ({ selected }) => {
   const {dark} = useContext(ThemeContext);
   const {data:services = [] , refetch } = useQuery({
     queryKey : ['appointments',date],
-    queryFn : ()=> fetch(`http://localhost:5000/appointments?date=${date}`)
+    queryFn : ()=> fetch(`https://doctors-portal-server-mu-flame.vercel.app/appointments?date=${date}`)
     .then((res) => res.json())
   })
 

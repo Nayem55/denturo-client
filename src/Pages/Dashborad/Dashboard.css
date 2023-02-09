@@ -13,4 +13,15 @@
     align-items: center ;
     justify-content: center;
 }
+.dashboard-light{
+    background-color: #cccccc;
+}
+.dashboard-dark{
+    background-color: #141525;
+}
 
+@media(max-width:992px){
+    .dashboard-light{
+        background-color: white;
+    }
+}

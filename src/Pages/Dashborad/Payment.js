@@ -8,7 +8,7 @@ const stripePromise = loadStripe("pk_test_51MYpR2LreJWMR3euIfHCrgX30kPJ1ZO1djcl7
 const Payment = () => {
   const booking = useLoaderData();
   return (
-    <div className="m-4 lg:m-10 ">
+    <div className="m-5 mt-32 lg:m-10 ">
       <h1 className="text-3xl">Payment for {booking?.treatment}</h1>
       <p className="text-xl">Please pay <strong>${booking?.price}</strong> for your appointment on {booking?.appointmentDate} at {booking?.slot}</p>
       <div className="my-12">

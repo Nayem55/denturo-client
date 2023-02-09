@@ -43,8 +43,8 @@ const Header = () => {
             <Link to='/home'>Home</Link>
             <Link to='/appointment'>Appointment</Link>
             <Link to='/dashboard'>Dashboard</Link>
-            <Link to='/about'>About</Link>
-            <Link to='/contact'>Contact Us</Link>
+            {/* <Link to='/about'>About</Link>
+            <Link to='/contact'>Contact Us</Link> */}
             {
                 user? <Link to='/login' onClick={handleSignOut}>Log out</Link> : <Link to='/login'>Login</Link>
 

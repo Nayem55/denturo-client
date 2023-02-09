@@ -22,7 +22,7 @@ const DashboardLayout = () => {
           type="checkbox"
           className="drawer-toggle"
         />
-        <div className={`drawer-content ${dark? "bg-[#141525]" : "bg-[#cccccc]"}`}>
+        <div className={`drawer-content ${dark? "dashboard-dark" : "dashboard-light"}`}>
           <Outlet></Outlet>
         </div>
         <div className="drawer-side bg-secondary">
